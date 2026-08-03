@@ -1,0 +1,64 @@
+---
+const links = [
+  { href: '#products', label: 'Products', key: 'nav.products' },
+  { href: '#stack', label: 'Stack', key: 'nav.stack' },
+];
+
+const base = Astro.url.pathname === '/' ? '' : '/';
+---
+
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="nav-brand">
+      <img src="/logos/logo_32.png" alt="Axonvale" width="28" height="28" draggable="false" />
+      <span>AXONVALE</span>
+    </div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="/" data-i18n="nav.home">Home</a>
+        {
+          links.map((link) => (
+            <a href={base + link.href} data-i18n={link.key}>{link.label}</a>
+          ))
+        }
+      </nav>
+      <div class="lang-dd" id="lang-dd">
+        <button type="button" class="lang-dd-btn" id="lang-dd-btn" aria-haspopup="listbox" aria-expanded="false">
+          <svg class="lang-dd-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"></path>
+          </svg>
+          <span class="lang-dd-label" id="lang-dd-label">English</span>
+          <svg class="lang-dd-chev" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul class="lang-dd-menu" id="lang-dd-menu" role="listbox" aria-label="Language" hidden></ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Home: on the landing page, clear any trailing hash (e.g. #products) and
+  // smooth-scroll to top. On other pages it navigates to "/" with no hash.
+  // Re-bound after each View Transition navigation, since the nav is re-created.
+  if (!window.__axonvaleNavHome) {
+    window.__axonvaleNavHome = true;
+    document.addEventListener('astro:page-load', function () {
+      var homeLink = document.querySelector('[data-i18n="nav.home"]');
+      if (!homeLink) return;
+      homeLink.addEventListener('click', function (event) {
+        var target = new URL(homeLink.getAttribute('href'), location.href);
+        if (target.pathname === location.pathname) {
+          event.preventDefault();
+          if (location.hash) {
+            history.replaceState(null, '', location.pathname + location.search);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+</script>

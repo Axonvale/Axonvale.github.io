@@ -1,0 +1,207 @@
+---
+import '@fontsource-variable/inter/index.css';
+import '@fontsource-variable/jetbrains-mono/index.css';
+import { ClientRouter } from 'astro:transitions';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+    <title>Privacy Policy — Axonvale</title>
+    <link rel="icon" type="image/png" href="/logos/logo_32.png" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <ClientRouter />
+    <script src="/i18n.js" defer></script>
+    <style>
+      .privacy {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 72px 24px 96px;
+      }
+      .privacy h1 {
+        font-size: 30px;
+        margin-bottom: 8px;
+      }
+      .privacy .meta {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--text-dim);
+        margin-bottom: 40px;
+      }
+      .privacy .privacy-note {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        color: var(--text-dim);
+        margin-top: -24px;
+        margin-bottom: 28px;
+      }
+      .privacy h2 {
+        font-size: 18px;
+        margin: 36px 0 12px;
+      }
+      .privacy p,
+      .privacy li {
+        color: var(--text-muted);
+        font-size: 14.5px;
+        line-height: 1.75;
+      }
+      .privacy ul {
+        padding-left: 1.3em;
+      }
+      .privacy li {
+        margin: 6px 0;
+      }
+      .privacy a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .privacy a:hover {
+        text-decoration: underline;
+      }
+      .privacy code {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--text);
+        background: var(--bg-elevated);
+        padding: 2px 6px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body data-lang-fixed="true">
+    <div class="bg-glow"></div>
+    <Nav />
+    <div class="container">
+      <article class="privacy" lang="en">
+        <h1>Axonvale Privacy Policy</h1>
+        <p class="meta">Last updated: August 2, 2026 · Publisher: Axonvale</p>
+
+        <p class="privacy-note">
+          This Privacy Policy is provided in English as the authoritative version.
+        </p>
+
+        <p>
+          Axonvale focuses on system engineering and software. We build distributed systems,
+          desktop software, websites, and browser extensions. This policy describes
+          how our products handle data, what we do not collect, and the choices available to
+          you.
+        </p>
+
+        <h2>1. Our data principles</h2>
+        <ul>
+          <li><strong>Local-first by design.</strong> Product settings, preferences, and credentials stay on your device unless a feature you initiate explicitly requires otherwise.</li>
+          <li><strong>No data selling.</strong> We do not sell user data, and we do not use it for advertising.</li>
+          <li><strong>No hidden collection.</strong> We do not operate first-party data-collection servers behind our products.</li>
+          <li><strong>User-initiated transmission only.</strong> Where a product communicates with a third-party service, it does so only when you trigger the action, using your own account and credentials.</li>
+        </ul>
+
+        <h2>2. Scope</h2>
+        <p>
+          This policy applies to software published by Axonvale, including:
+        </p>
+        <ul>
+          <li>Distributed control system products deployed by enterprise customers</li>
+          <li>Desktop applications and background services</li>
+          <li>Websites and web properties operated by Axonvale</li>
+          <li>Browser extensions</li>
+        </ul>
+        <p>
+          When an organization deploys an enterprise product under its own infrastructure,
+          that organization is the data controller for its environment, and its own policies
+          and agreements govern the deployment.
+        </p>
+
+        <h2>3. Data stored on your device</h2>
+        <p>Depending on the product, the following may be stored locally in your browser or on your machine:</p>
+        <ul>
+          <li>User-entered API keys and account credentials</li>
+          <li>Product preferences, language and model selections, concurrency settings</li>
+          <li>User-defined site blacklist or policy rules</li>
+          <li>Session and task state required for the product's core function</li>
+          <li>Temporary in-memory caches for performance during a session</li>
+        </ul>
+        <p>
+          This data stays in your profile or machine. You can clear it by removing the product,
+          clearing product data, or uninstalling. Enterprise deployments may additionally
+          centralize configuration through their own control plane.
+        </p>
+
+        <h2>4. Data transmitted over the network</h2>
+        <p>
+          Axonvale products do not send your data to Axonvale-operated servers as part of
+          normal operation. When you use a feature that requires an external service, your
+          content is transmitted to the service you configured, using your credentials:
+        </p>
+        <ul>
+          <li>Enterprise products may exchange control and status data between nodes in a deployment you operate, over encrypted channels.</li>
+        </ul>
+        <p>
+          Data processed by third-party providers is governed by those providers' own terms and
+          privacy policies.
+        </p>
+
+        <h2>5. Permissions</h2>
+        <p>
+          Our products request only the permissions needed for their stated features, and we
+          keep permission surfaces minimal. Browser extensions, for example, declare permissions
+          explicitly and never execute remote code. Permission justifications are disclosed per
+          product in each store listing. Desktop and enterprise products run only the code you
+          install.
+        </p>
+
+        <h2>6. Security</h2>
+        <ul>
+          <li>Network communication is encrypted in transit using standard protocols.</li>
+          <li>Credentials are stored locally and never logged in plain text.</li>
+          <li>Enterprise deployments support private networking and encrypted control and data planes.</li>
+          <li>We follow secure development practices, including code review and minimal attack surfaces.</li>
+        </ul>
+
+        <h2>7. Children</h2>
+        <p>
+          Axonvale products are not directed at children under 13, and we do not knowingly
+          collect personal information from children. Do not use a product if you are not
+          permitted to do so under applicable law.
+        </p>
+
+        <h2>8. Your rights</h2>
+        <p>
+          Because our products are local-first and do not rely on Axonvale-operated accounts,
+          you generally control your data directly. You may:
+        </p>
+        <ul>
+          <li>Review and edit settings and stored configuration at any time</li>
+          <li>Delete locally stored data by clearing product data or uninstalling</li>
+          <li>Choose which third-party services, if any, your data is sent to</li>
+        </ul>
+        <p>
+          If you have questions or requests regarding your data, contact us at{' '}
+          <a class="contact-mailto" href="mailto:support@axonvale.com" data-email="support@axonvale.com">support@axonvale.com</a>{' '}
+          and we will respond promptly.
+        </p>
+
+        <h2>9. Changes to this policy</h2>
+        <p>
+          We may update this policy when our products or data practices change. The "Last
+          updated" date above is revised accordingly. Material changes will be reflected here.
+        </p>
+
+        <h2>10. Support</h2>
+        <p>
+          Questions about privacy or data handling:{' '}
+          <a class="contact-mailto" href="mailto:support@axonvale.com" data-email="support@axonvale.com">support@axonvale.com</a>
+        </p>
+      </article>
+    </div>
+    <Footer />
+    <script>
+      import '../../scripts/mailto-dialog.ts';
+    </script>
+  </body>
+</html>

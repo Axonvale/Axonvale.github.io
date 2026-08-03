@@ -1,0 +1,39 @@
+---
+
+const year = new Date().getFullYear();
+
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/logos/logo_16.png" alt="" width="20" height="20" draggable="false" />
+      <span data-i18n="footer.copyright">© {year} Axonvale. All rights reserved.</span>
+    </div>
+    <div class="footer-links">
+      <a class="footer-mail contact-mailto" href="mailto:contact@axonvale.com" data-email="contact@axonvale.com">contact@axonvale.com</a>
+      <a href="/privacy/" data-privacy-link data-i18n="footer.privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // With Astro View Transitions, cross-page navigation is animated natively.
+  // Only special case left: clicking "Privacy" while already on the privacy page
+  // should smooth-scroll to top instead of reloading. Re-bound after each
+  // navigation since the footer is re-created by the transition.
+  if (!window.__axonvaleFooterPrivacy) {
+    window.__axonvaleFooterPrivacy = true;
+    document.addEventListener('astro:page-load', function () {
+      var privacyLink = document.querySelector('[data-privacy-link]');
+      if (!privacyLink) return;
+      privacyLink.addEventListener('click', function (event) {
+        var target = new URL(privacyLink.getAttribute('href'), location.href);
+        if (target.pathname === location.pathname) {
+          event.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+</script>

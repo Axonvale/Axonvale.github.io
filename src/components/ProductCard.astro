@@ -1,0 +1,79 @@
+---
+interface Props {
+  id: string;
+  product: {
+    name: string;
+    status: 'open' | 'closed';
+    tagline: string;
+    platforms: string[];
+    capabilities: { key: string; value: string }[];
+    demoVideo: string | null;
+    links: { github?: string; store?: string; contact?: string };
+    body: string;
+  };
+}
+
+const { id, product } = Astro.props;
+const i18n = (key: string) => `product.${id}.${key}`;
+const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+---
+
+<article class="product-card">
+  <div class="product-head">
+    <div>
+      <div class="product-title" data-i18n={i18n('name')}>{product.name}</div>
+    </div>
+    <span class={`badge badge-${product.status}`} data-i18n={product.status === 'open' ? 'badge.open' : 'badge.closed'}>
+      {product.status === 'open' ? 'Open Source' : 'Closed Source'}
+    </span>
+  </div>
+
+  <p class="product-tagline" data-i18n={i18n('tagline')}>{product.tagline}</p>
+
+  <div class="product-platforms">
+    {product.platforms.map((p) => <span class="platform-chip">{p}</span>)}
+  </div>
+
+  {
+    product.capabilities.length > 0 && (
+      <div class="capabilities">
+        {product.capabilities.map((cap, capIdx) => (
+          <div class="cap-card">
+            <div class="cap-key" data-i18n={i18n(`cap.${capIdx}.key`)}>{cap.key}</div>
+            <div class="cap-value" data-i18n={i18n(`cap.${capIdx}.value`)}>{cap.value}</div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    product.demoVideo ? (
+      <div class="demo-video">
+        <video controls src={product.demoVideo} poster="/logos/logo_128.png" />
+      </div>
+    ) : product.status === 'closed' ? (
+      <div class="demo-placeholder" data-i18n="demo.comingSoon">product demo preview — coming soon</div>
+    ) : null
+  }
+
+  {
+    product.body && (
+      <p class="product-tagline" data-i18n={i18n('body')}>{product.body}</p>
+    )
+  }
+
+  <div class="product-links">
+    {product.links.github && <a class="link-pill" href={product.links.github} target="_blank" rel="noopener noreferrer" data-i18n="btn.github">GitHub ↗</a>}
+    {product.links.store && <a class="link-pill" href={product.links.store} target="_blank" rel="noopener noreferrer" data-i18n="btn.store">Store ↗</a>}
+    {product.links.contact && isEmail(product.links.contact) ? (
+      <button type="button" class="link-pill contact-mailto" data-email={product.links.contact} data-i18n="btn.contact">Contact</button>
+    ) : product.links.contact ? (
+      <a class="link-pill" href={product.links.contact} data-i18n="btn.contact">Contact ↗</a>
+    ) : null}
+  </div>
+</article>
+
+<script>
+  import '../scripts/mailto-dialog.ts';
+</script>
