@@ -1,13 +1,14 @@
 <p align="center">
   <img src="public/logos/logo_512.png" alt="Axonvale Logo" width="120">
   <h1 align="center">Axonvale</h1>
-  <p align="center">Official website of Axonvale, hosted on GitHub Pages.</p>
+  <p align="center">Official landing page for Axonvale.</p>
+</p>
+
+<p align="center">
+  <a href="https://www.axonvale.com"><b>🌐 Visit Official Website</b></a>
 </p>
 
 ---
-
-- **Website**: https://www.axonvale.com
-- **Hosted on**: GitHub Pages (`axonvale.github.io`) with CNAME to the official domain
 
 ## About
 
@@ -17,3 +18,7 @@ Axonvale builds distributed systems, desktop software, websites, and browser ext
 
 - **Business**: contact@axonvale.com
 - **Support**: support@axonvale.com
+
+---
+
+<sub>Hosted on GitHub Pages (`axonvale.github.io`) with custom domain mapping.</sub>
