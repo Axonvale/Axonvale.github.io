@@ -16,9 +16,9 @@ Axonvale builds distributed systems, desktop software, websites, and browser ext
 
 ## Contact
 
-- **Business**: contact@axonvale.com
-- **Support**: support@axonvale.com
+- **Business**: [contact@axonvale.com](mailto:contact@axonvale.com)
+- **Support**: [support@axonvale.com](mailto:support@axonvale.com)
 
 ---
 
-<sub>Hosted on GitHub Pages with custom domain mapping (`axonvale.com`).</sub>
+<sub>Hosted on GitHub Pages with custom domain mapping (`www.axonvale.com`).</sub>
