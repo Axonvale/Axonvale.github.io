@@ -21,4 +21,4 @@ Axonvale builds distributed systems, desktop software, websites, and browser ext
 
 ---
 
-<sub>Hosted on GitHub Pages (`axonvale.github.io`) with custom domain mapping.</sub>
+<sub>Hosted on GitHub Pages with custom domain mapping (`axonvale.com`).</sub>
