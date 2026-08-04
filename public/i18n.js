@@ -77,6 +77,15 @@
   }
 
   function getLocaleName(code) {
+    var localized;
+    if (state.translations) {
+      var lang = state.translations[state.currentLang] || {};
+      var fallback = state.translations[DEFAULT_LANG] || {};
+      var val = lang['lang.' + code];
+      if (val === undefined || val === null) val = fallback['lang.' + code];
+      localized = val;
+    }
+    if (localized !== undefined && localized !== null) return localized;
     for (var i = 0; i < LOCALES.length; i += 1) {
       if (LOCALES[i].code === code) return LOCALES[i].name;
     }
@@ -95,7 +104,9 @@
       var menu = document.getElementById('lang-dd-menu');
       if (menu) {
         menu.querySelectorAll('[role="option"]').forEach(function (item) {
-          var selected = item.getAttribute('data-lang') === lang;
+          var code = item.getAttribute('data-lang');
+          var selected = code === lang;
+          item.textContent = getLocaleName(code);
           item.setAttribute('aria-selected', selected ? 'true' : 'false');
           item.classList.toggle('is-active', selected);
         });
@@ -133,7 +144,7 @@
       li.setAttribute('data-lang', locale.code);
       li.setAttribute('aria-selected', locale.code === state.currentLang ? 'true' : 'false');
       li.tabIndex = -1;
-      li.textContent = locale.name;
+      li.textContent = getLocaleName(locale.code);
       li.addEventListener('click', function () {
         storeLang(locale.code);
         applyLanguage(locale.code, true);
