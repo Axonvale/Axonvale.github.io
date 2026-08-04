@@ -222,6 +222,7 @@ img {
   min-width: 190px;
   max-height: 340px;
   overflow-y: auto;
+  overscroll-behavior: contain;
   margin: 0;
   padding: 6px;
   list-style: none;
