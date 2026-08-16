@@ -1,5 +1,3 @@
-// Client-side i18n for Axonvale landing page.
-// Single translations.json holds all locales; UI text is swapped via data-i18n attributes.
 (function () {
   'use strict';
 
@@ -29,7 +27,7 @@
     { code: 'hi', name: 'हिन्दी' },
   ];
 
-  // Shared state survives both navigation swaps and Astro re-executing this script.
+  // Survives View Transition DOM swaps and this script re-running.
   var state = window.__axonvaleI18nState;
   if (!state) {
     state = window.__axonvaleI18nState = {
@@ -45,18 +43,14 @@
       if (saved && LOCALES.some(function (l) { return l.code === saved; })) {
         return saved;
       }
-    } catch (e) {
-      /* localStorage unavailable */
-    }
+    } catch (e) {}
     return DEFAULT_LANG;
   }
 
   function storeLang(lang) {
     try {
       localStorage.setItem(STORAGE_KEY, lang);
-    } catch (e) {
-      /* ignore */
-    }
+    } catch (e) {}
   }
 
   function translate(node) {
@@ -136,7 +130,6 @@
 
     while (menu.firstChild) menu.removeChild(menu.firstChild);
 
-    // Build option items
     LOCALES.forEach(function (locale) {
       var li = document.createElement('li');
       li.className = 'lang-dd-item';
@@ -159,7 +152,6 @@
     });
   }
 
-  // Applies the saved language to whatever DOM is currently present.
   function initPage() {
     initSelector();
     applyLanguage(state.currentLang, true);
@@ -186,17 +178,15 @@
   } else {
     window.__axonvaleI18nInstalled = true;
 
-    // Close on outside click
     document.addEventListener('click', function () {
       setMenuOpen(false);
     });
 
-    // Close on Escape
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') setMenuOpen(false);
     });
 
-    // Fires on initial load and after every View Transition navigation.
+    // Re-apply locale after each View Transition swap.
     document.addEventListener('astro:page-load', function () {
       state.currentLang = getStoredLang();
       initPage();

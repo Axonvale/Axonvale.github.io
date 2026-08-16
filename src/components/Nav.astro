@@ -41,9 +41,7 @@ const base = Astro.url.pathname === '/' ? '' : '/';
 </header>
 
 <script>
-  // Home: on the landing page, clear any trailing hash (e.g. #products) and
-  // smooth-scroll to top. On other pages it navigates to "/" with no hash.
-  // Re-bound after each View Transition navigation, since the nav is re-created.
+  // View Transitions recreate nav; same-path Home must drop the hash and scroll.
   if (!window.__axonvaleNavHome) {
     window.__axonvaleNavHome = true;
     document.addEventListener('astro:page-load', function () {

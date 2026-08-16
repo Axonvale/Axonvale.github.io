@@ -1,5 +1,3 @@
-// Shared mailto handler: try mailto first; show a dialog if the mail client cannot be opened.
-// Any element with class .contact-mailto and data-email participates.
 document.addEventListener('click', function (event) {
   var target = event.target as Element;
   var btn = target.closest('.contact-mailto');
@@ -15,10 +13,9 @@ document.addEventListener('click', function (event) {
   }
   window.addEventListener('blur', onBlur);
 
-  // Launch the default mail client.
   window.location.href = 'mailto:' + email;
 
-  // If the mail client did not open (window never blurred), show a dialog.
+  // No blur within 800ms usually means the mail client never took focus.
   setTimeout(function () {
     window.removeEventListener('blur', onBlur);
     if (mailtoFired) return;

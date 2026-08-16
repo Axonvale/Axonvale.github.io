@@ -37,7 +37,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom browser scrollbar (vertical + horizontal) */
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--text-dim) var(--bg);
@@ -90,7 +89,6 @@ img {
   padding: 0 24px;
 }
 
-/* ---- grid background pattern ---- */
 .bg-grid {
   position: fixed;
   inset: 0;
@@ -113,7 +111,6 @@ img {
     radial-gradient(ellipse 25% 22% at 85% 60%, rgba(79, 140, 255, 0.06), transparent);
 }
 
-/* ---- nav ---- */
 .nav {
   position: sticky;
   top: 0;
@@ -274,7 +271,6 @@ img {
   color: var(--accent);
 }
 
-/* Custom scrollbar for the language dropdown */
 .lang-dd-menu {
   scrollbar-width: thin;
   scrollbar-color: var(--text-dim) transparent;
@@ -302,7 +298,6 @@ img {
 }
 
 
-/* ---- hero ---- */
 .hero {
   padding: 120px 0 88px;
   text-align: center;
@@ -375,7 +370,6 @@ img {
   transform: translateY(-1px);
 }
 
-/* ---- section framing ---- */
 .section {
   padding: 88px 0;
 }
@@ -391,7 +385,6 @@ img {
   letter-spacing: 0.02em;
 }
 
-/* ---- product card ---- */
 .product-card {
   position: relative;
   border: 1px solid var(--border);
@@ -524,7 +517,6 @@ img {
   color: var(--accent);
 }
 
-/* ---- capabilities grid (flagship) ---- */
 .capabilities {
   margin-top: 28px;
   display: grid;
@@ -561,7 +553,6 @@ img {
   color: var(--text-muted);
 }
 
-/* ---- demo placeholder ---- */
 .demo-placeholder {
   margin-top: 24px;
   border: 1px dashed var(--border-strong);
@@ -573,7 +564,6 @@ img {
   font-size: 13px;
 }
 
-/* ---- terminal / tech stack ---- */
 .terminal {
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -616,9 +606,9 @@ img {
   overflow-x: auto;
 }
 
-.tl { color: var(--text-dim); }        /* line */
-.tk { color: var(--accent); }          /* key / success */
-.td { color: var(--text-muted); }      /* dim value */
+.tl { color: var(--text-dim); }
+.tk { color: var(--accent); }
+.td { color: var(--text-muted); }
 
 .terminal-body .tk {
   display: inline-block;
@@ -626,7 +616,6 @@ img {
   margin-right: 2ch;
 }
 
-/* ---- mailto fallback dialog ---- */
 .mailto-overlay {
   position: fixed;
   inset: 0;
@@ -723,7 +712,6 @@ img {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ---- footer ---- */
 .footer {
   border-top: 1px solid var(--border);
   padding: 40px 0;
@@ -778,7 +766,6 @@ img {
   color: var(--text);
 }
 
-/* ---- responsive ---- */
 @media (max-width: 768px) {
   .hero { padding: 96px 0 72px; }
   .section { padding: 72px 0; }

@@ -18,10 +18,7 @@ const year = new Date().getFullYear();
 </footer>
 
 <script>
-  // With Astro View Transitions, cross-page navigation is animated natively.
-  // Only special case left: clicking "Privacy" while already on the privacy page
-  // should smooth-scroll to top instead of reloading. Re-bound after each
-  // navigation since the footer is re-created by the transition.
+  // View Transitions recreate footer; same-path Privacy should scroll, not reload.
   if (!window.__axonvaleFooterPrivacy) {
     window.__axonvaleFooterPrivacy = true;
     document.addEventListener('astro:page-load', function () {

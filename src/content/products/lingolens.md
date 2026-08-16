@@ -19,4 +19,4 @@ links:
   github: https://github.com/Axonvale/lingolens
 ---
 
-Open source · MIT. Includes a site blacklist, optional TTS, and concurrency control with a minimal permission footprint.
+Open source · AGPL-3.0. Includes a site blacklist, optional TTS, and concurrency control with a minimal permission footprint.
