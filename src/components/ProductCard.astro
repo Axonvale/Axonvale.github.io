@@ -8,7 +8,10 @@ interface Props {
     platforms: string[];
     capabilities: { key: string; value: string }[];
     demoVideo: string | null;
-    links: { github?: string; store?: string; contact?: string };
+    demoPoster: string | null;
+    gallery: { src: string; caption: string }[];
+    architecture: { title: string; items: string[] }[];
+    links: { github?: string; store?: string; storeChrome?: string; storeEdge?: string; contact?: string };
     body: string;
   };
 }
@@ -49,12 +52,60 @@ const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
   {
     product.demoVideo ? (
-      <div class="demo-video">
-        <video controls src={product.demoVideo} poster="/logos/logo_128.png" />
+      <div class="demo-block">
+        <div class="demo-label" data-i18n="demo.livePreview">Live product demo</div>
+        <div class="demo-video">
+          <video
+            controls
+            controlsList="nodownload noplaybackrate noremoteplayback"
+            disablePictureInPicture
+            preload="metadata"
+            playsinline
+            src={product.demoVideo}
+            poster={product.demoPoster ?? undefined}
+          >
+          </video>
+        </div>
       </div>
     ) : product.status === 'closed' ? (
       <div class="demo-placeholder" data-i18n="demo.comingSoon">product demo preview — coming soon</div>
     ) : null
+  }
+
+  {
+    product.gallery.length > 0 && (
+      <div class="product-gallery">
+        <div class="demo-label" data-i18n={i18n('galleryLabel')}>{id === 'lingolens' ? 'Extension surfaces' : 'Chaos engineering surfaces'}</div>
+        <div class={`gallery-grid${product.gallery.length > 1 ? ' gallery-grid--multi' : ''}`}>
+          {product.gallery.map((item, idx) => (
+            <figure class={`gallery-item${idx === 0 && product.gallery.length > 1 ? ' gallery-item--feature' : ''}`}>
+              <img src={item.src} alt={item.caption} loading="lazy" />
+              <figcaption data-i18n={i18n(`gallery.${idx}.caption`)}>{item.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    product.architecture.length > 0 && (
+      <div class="architecture">
+        <div class="demo-label" data-i18n="demo.architecture">Architecture overview</div>
+        <div class="arch-grid">
+          {product.architecture.map((section, sIdx) => (
+            <div class="arch-card">
+              <div class="arch-title" data-i18n={i18n(`arch.${sIdx}.title`)}>{section.title}</div>
+              <ul class="arch-list">
+                {section.items.map((item, iIdx) => (
+                  <li data-i18n={i18n(`arch.${sIdx}.item.${iIdx}`)}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   {
@@ -65,7 +116,11 @@ const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
   <div class="product-links">
     {product.links.github && <a class="link-pill" href={product.links.github} target="_blank" rel="noopener noreferrer" data-i18n="btn.github">GitHub ↗</a>}
-    {product.links.store && <a class="link-pill" href={product.links.store} target="_blank" rel="noopener noreferrer" data-i18n="btn.store">Store ↗</a>}
+    {product.links.storeEdge && <a class="link-pill" href={product.links.storeEdge} target="_blank" rel="noopener noreferrer" data-i18n="btn.storeEdge">Edge Add-ons ↗</a>}
+    {product.links.storeChrome && <a class="link-pill" href={product.links.storeChrome} target="_blank" rel="noopener noreferrer" data-i18n="btn.storeChrome">Chrome Web Store ↗</a>}
+    {product.links.store && !product.links.storeEdge && !product.links.storeChrome && (
+      <a class="link-pill" href={product.links.store} target="_blank" rel="noopener noreferrer" data-i18n="btn.store">Store ↗</a>
+    )}
     {product.links.contact && isEmail(product.links.contact) ? (
       <button type="button" class="link-pill contact-mailto" data-email={product.links.contact} data-i18n="btn.contact">Contact</button>
     ) : product.links.contact ? (

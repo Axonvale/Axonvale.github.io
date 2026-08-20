@@ -11,10 +11,29 @@ const products = defineCollection({
     platforms: z.array(z.string()),
     capabilities: z.array(z.object({ key: z.string(), value: z.string() })).default([]),
     demoVideo: z.string().nullable().default(null),
+    demoPoster: z.string().nullable().default(null),
+    gallery: z
+      .array(
+        z.object({
+          src: z.string(),
+          caption: z.string(),
+        }),
+      )
+      .default([]),
+    architecture: z
+      .array(
+        z.object({
+          title: z.string(),
+          items: z.array(z.string()),
+        }),
+      )
+      .default([]),
     links: z
       .object({
         github: z.string().optional(),
         store: z.string().optional(),
+        storeChrome: z.string().optional(),
+        storeEdge: z.string().optional(),
         contact: z.string().optional(),
       })
       .default({}),

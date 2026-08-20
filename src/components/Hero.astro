@@ -1,15 +1,25 @@
 <main class="hero">
   <div class="container">
     <img class="hero-logo" src="/logos/logo_128.png" alt="Axonvale" width="96" height="96" draggable="false" />
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Enterprise systems software</p>
     <h1>AXONVALE</h1>
     <p class="sub" data-i18n="hero.sub">
-      Distributed systems, desktop software, websites, browser extensions, and everything in between —
-      engineered end to end. Focused on building robust, scalable architectures with
-      enterprise-grade security and data protection built in.
+      We design and deliver cross-platform distributed control systems and client software for private deployment —
+      with security, operability, and end-to-end ownership built in.
     </p>
+    <ul class="hero-trust">
+      <li data-i18n="hero.trust.0">Private deployment</li>
+      <li data-i18n="hero.trust.1">Windows · Android · Browser</li>
+      <li data-i18n="hero.trust.2">Closed-source systems delivery</li>
+      <li data-i18n="hero.trust.3">Production-ready open source</li>
+    </ul>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#products" data-i18n="hero.ctaPrimary">Explore Products</a>
-      <a class="btn btn-ghost" href="#stack" data-i18n="hero.ctaSecondary">View Stack</a>
+      <button type="button" class="btn btn-primary contact-mailto" data-email="contact@axonvale.com" data-i18n="hero.ctaPrimary">Contact us</button>
+      <a class="btn btn-ghost" href="#products" data-i18n="hero.ctaSecondary">View products</a>
     </div>
   </div>
 </main>
+
+<script>
+  import '../scripts/mailto-dialog.ts';
+</script>

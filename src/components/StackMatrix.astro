@@ -1,0 +1,59 @@
+---
+const pillars = [
+  {
+    key: 'systems',
+    title: 'Native systems engineering',
+    body: 'Systems languages and low-level delivery across desktop and mobile runtimes.',
+    items: ['C++', 'Rust', 'C#', 'Assembly', 'Kotlin', 'Java', 'Python', 'TypeScript'],
+  },
+  {
+    key: 'surfaces',
+    title: 'Deployment surfaces',
+    body: 'First-party clients and agents on the platforms that carry production traffic.',
+    items: ['Windows', 'Linux', 'Android', 'Browser (MV3)'],
+  },
+  {
+    key: 'control',
+    title: 'Distributed control topology',
+    body: 'Control-plane orchestration with node agents, policy publish, and task automation.',
+    items: ['Control plane', 'Node agent', 'Policy orchestration', 'Session & task channels'],
+  },
+  {
+    key: 'transport',
+    title: 'Secure transport fabric',
+    body: 'Encrypted session paths with NAT traversal for heterogeneous node topologies.',
+    items: ['TLS', 'mTLS', 'WSS', 'WebRTC', 'IPv4/IPv6 NAT traversal'],
+  },
+  {
+    key: 'verify',
+    title: 'Resilience verification',
+    body: 'ChaosForge injects controlled faults so recovery behavior is measurable and repeatable.',
+    items: ['Fault injection', 'Network / filesystem / registry domains', 'Auditable recovery evidence'],
+  },
+  {
+    key: 'assurance',
+    title: 'Binary security assurance',
+    body: 'Structured security validation of binaries and runtime surfaces — weak paths are found before private deployment.',
+    items: ['Binary analysis', 'Exposure review', 'Hardening verification', 'Integrity assurance'],
+  },
+];
+---
+
+<section class="stack-matrix">
+  <div class="stack-grid">
+    {
+      pillars.map((pillar, idx) => (
+        <article class="stack-card">
+          <div class="stack-card-index" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</div>
+          <h3 class="stack-card-title" data-i18n={`stack.${pillar.key}.title`}>{pillar.title}</h3>
+          <p class="stack-card-body" data-i18n={`stack.${pillar.key}.body`}>{pillar.body}</p>
+          <ul class="stack-card-items">
+            {pillar.items.map((item, itemIdx) => (
+              <li data-i18n={`stack.${pillar.key}.item.${itemIdx}`}>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>

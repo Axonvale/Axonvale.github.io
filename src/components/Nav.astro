@@ -1,7 +1,8 @@
 ---
 const links = [
   { href: '#products', label: 'Products', key: 'nav.products' },
-  { href: '#stack', label: 'Stack', key: 'nav.stack' },
+  { href: '#stack', label: 'Capabilities', key: 'nav.stack' },
+  { href: '#contact', label: 'Contact', key: 'nav.contact' },
 ];
 
 const base = Astro.url.pathname === '/' ? '' : '/';
@@ -9,10 +10,10 @@ const base = Astro.url.pathname === '/' ? '' : '/';
 
 <header class="nav">
   <div class="container nav-inner">
-    <div class="nav-brand">
+    <a class="nav-brand" href="/">
       <img src="/logos/logo_32.png" alt="Axonvale" width="28" height="28" draggable="false" />
       <span>AXONVALE</span>
-    </div>
+    </a>
     <div class="nav-right">
       <nav class="nav-links">
         <a href="/" data-i18n="nav.home">Home</a>
@@ -22,6 +23,7 @@ const base = Astro.url.pathname === '/' ? '' : '/';
           ))
         }
       </nav>
+      <button type="button" class="nav-cta contact-mailto" data-email="contact@axonvale.com" data-i18n="nav.cta">Contact</button>
       <div class="lang-dd" id="lang-dd">
         <button type="button" class="lang-dd-btn" id="lang-dd-btn" aria-haspopup="listbox" aria-expanded="false">
           <svg class="lang-dd-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -41,6 +43,8 @@ const base = Astro.url.pathname === '/' ? '' : '/';
 </header>
 
 <script>
+  import '../scripts/mailto-dialog.ts';
+
   // View Transitions recreate nav; same-path Home must drop the hash and scroll.
   if (!window.__axonvaleNavHome) {
     window.__axonvaleNavHome = true;

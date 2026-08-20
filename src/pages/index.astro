@@ -6,8 +6,9 @@ import '@fontsource-variable/jetbrains-mono/index.css';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import ProductCard from '../components/ProductCard.astro';
-import Terminal from '../components/Terminal.astro';
+import StackMatrix from '../components/StackMatrix.astro';
 import Footer from '../components/Footer.astro';
+import ContactSection from '../components/ContactSection.astro';
 
 const products = (await getCollection('products')).sort(
   (a, b) => a.data.order - b.data.order,
@@ -19,12 +20,12 @@ const products = (await getCollection('products')).sort(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Axonvale — Distributed systems, desktop software, websites, and browser extensions." />
+    <meta name="description" content="Axonvale — enterprise systems software for private deployment. Distributed topology control, cross-platform clients, and production browser extensions." />
     <title>Axonvale</title>
     <link rel="icon" type="image/png" href="/logos/logo_32.png" />
     <link rel="apple-touch-icon" href="/logos/logo_192.png" />
-    <meta property="og:title" content="Axonvale" />
-    <meta property="og:description" content="Distributed systems, desktop software, websites, and browser extensions engineered end to end." />
+    <meta property="og:title" content="Axonvale — Enterprise systems software" />
+    <meta property="og:description" content="Private-deployment distributed control systems and client software, engineered end to end." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/logos/logo_512.png" />
     <link rel="stylesheet" href="/styles/global.css" />
@@ -33,7 +34,6 @@ const products = (await getCollection('products')).sort(
   </head>
   <body>
     <div class="bg-glow"></div>
-    <div class="bg-grid"></div>
 
     <Nav />
 
@@ -42,9 +42,13 @@ const products = (await getCollection('products')).sort(
     <section class="section" id="products">
       <div class="container">
         <div class="section-head">
+          <p class="section-eyebrow" data-i18n="products.eyebrow">Product portfolio</p>
           <h2 class="section-title" data-i18n="products.title">Products</h2>
+          <p class="section-lead" data-i18n="products.lead">
+            Closed-source distributed systems for private deployment, plus production open-source software on major browser stores.
+          </p>
         </div>
-        <div style="display:grid;gap:28px;">
+        <div class="product-list">
           {
             products.map((entry) => (
               <ProductCard
@@ -56,6 +60,9 @@ const products = (await getCollection('products')).sort(
                   platforms: entry.data.platforms,
                   capabilities: entry.data.capabilities,
                   demoVideo: entry.data.demoVideo,
+                  demoPoster: entry.data.demoPoster,
+                  gallery: entry.data.gallery,
+                  architecture: entry.data.architecture,
                   links: entry.data.links,
                   body: entry.body,
                 }}
@@ -69,11 +76,17 @@ const products = (await getCollection('products')).sort(
     <section class="section" id="stack">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title" data-i18n="platform.title">Engineering Stack</h2>
+          <p class="section-eyebrow" data-i18n="platform.eyebrow">Delivery capability</p>
+          <h2 class="section-title" data-i18n="platform.title">Engineering depth</h2>
+          <p class="section-lead" data-i18n="platform.lead">
+            The same engineering surface behind Axonvale products — native systems, secure transport, control-plane orchestration, and resilience verification.
+          </p>
         </div>
-        <Terminal />
+        <StackMatrix />
       </div>
     </section>
+
+    <ContactSection />
 
     <Footer />
   </body>
